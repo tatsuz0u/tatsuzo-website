@@ -103,95 +103,6 @@ public struct RedatedView<Content: View>: View {
 
 <img alt="data-flow" width="800" src="/assets/img/posts/2023-05-11-bitremote-insight/data-flow.png">
 
-## Table カラムのカスタマイズ
-**⚠️: こちらの内容は、一部誤りがあるかもしれないです。**
-
-`TableColumnBuilder` API 制限
-
-- 制御フローが書けない
-- `ForEach` が書けない
-
-結局手入力で指定できる内容しか書けなくて、Apple はデベロッパにカラムを動的に変えてほしくないようです。
-
-```swift
-Table(
-    data,
-    columns: {
-        nameColumn
-        sizeColumn
-        // ...
-    }
-)
-```
-
-そこで考えたのは、Table ごと可能なケースを全部用意すればできるじゃないですか。🤔
-
-ただし、可能なケースというのは、実装したい機能によって変わります。
-
-### 組み合わせと順列
-カラムを非表示にするだけなら、それは項目数可変・項目順番不変の組み合わせ（Combinations）です。しかし、カラムの順番も指定したい場合は、項目順番も可変なので順列（Permutations）になります。
-
-```swift
-let columns = [1, 2, 3]
-
-// Combinations
-// `1...` == 空き配列を除いて全てのケース
-print(columns.combinations(ofCount: 1...))
-// Result (7 elements): [[1], [2], [3], [1, 2], [1, 3], [2, 3], [1, 2, 3]]
-
-// Permutations
-print(columns.permutations(ofCount: 1...))
-// Result (15 elements): [[1], [2], [3], [1, 2], [1, 3], **[2, 1]**, [2, 3], **[3, 1]**,
-// **[3, 2]**, [1, 2, 3], **[1, 3, 2]**, **[2, 1, 3]**, **[2, 3, 1]**, **[3, 1, 2]**, **[3, 2, 1]**]
-```
-
-ご覧の通り、カラム数がたったの 3 つでも、順列のケース数は 2 倍以上に増えます。
-
-では僕のアプリのように、カラム数が 9 つある場合はどうなるでしょうか？
-    
-| 機能 / 数量 | 非表示のみ | 非表示 + 順番指定 |
-| --- | --- | --- |
-| ケース数 | 511 | 986,409 |
-| ファイル数（100 行） | 6 | 9,865 |
-| ファイル数（300 行） | 2 | 3,289 |
-
-組み合わせの 1,930 倍ほど、およそ百万ケース・一万ファイルに劇的に膨大化します。
-
-ファイル内のコードはほとんど UI コードなので、行数が多すぎるとコンパイラが時間かかりすぎてビルド失敗します。ちなみに、100 行のコード量はこんな感じです。
-
-<img alt="generated-code" width="800" src="/assets/img/posts/2023-05-11-bitremote-insight/generated-code.png">
-
-こんなファイルを一万個近く用意しないと順番指定機能が実装できないので、ここまでなれば、コンパイラの事情も考えるとすべてのケースをアプリに詰め込むのはもはや不可能でしょう。なので最後は非表示機能のみ対応することにしました。
-
-### 改善案
-やはり最初になんとなく勘づいた通り、百万近くのケースを用意しないといけないのは考えすぎでした。
-
-`TableColumnBuilder` API に制限があるとはいえ、`buildBlock` は十個まで用意してくれているので、制御フローや `ForEach` を使わずに羅列してあげれば大丈夫なはずです。
-
-```swift
-switch columnTypes.count {
-// ...
-case let value where value >= 10:
-    Table(
-        rows,
-        selection: selection,
-        sortOrder: sortOrder,
-        columns: { 
-            columnTypes[0].column
-            columnTypes[1].column
-            columnTypes[2].column
-            columnTypes[3].column
-            columnTypes[4].column
-            columnTypes[5].column
-            columnTypes[6].column
-            columnTypes[7].column
-            columnTypes[8].column
-            columnTypes[9].column
-        }
-    )
-}
-```
-
 ## macOS アプリ開発
 ### キーボード
 フォーカスされた画面内のボタンに `.keyboardShortcut` を付けると、定義したショートカット（例えば ⌘ + R）が押された場合、そのボタンのアクションが実行されます。
@@ -227,8 +138,8 @@ case let value where value >= 10:
 - `.navigationSplitViewColumnWidth` View の所属カラムの横幅
 
 ## 終わりに
-> [**BitRemote**](https://bitremote.app) は現在、TestFlight にて公開テスト中です。
+> [**BitRemote**](https://bitremote.app) は現在、[App Store](https://apps.apple.com/ja/app/bitremote/id6477765303) にて公開中です。
 > 
-> 枠は十分にあると思いますので、よかったらアプリを触っていただけると嬉しいです！
+> よかったらアプリを触っていただけると嬉しいです！
 
 最後までお読みいただき、ありがとうございました！
