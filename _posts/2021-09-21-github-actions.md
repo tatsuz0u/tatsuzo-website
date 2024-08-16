@@ -2,7 +2,6 @@
 tag: Code
 title: GitHub Actions 建構 iOS CI/CD 自動化流程
 date: 2021-09-21 05:42:13-0000
-description: 我目前正在維護 EhPanda 這個開源專案，在引入 GitHub Actions 之前，我每次發佈新版本都要手動執行 「測試、更新版本、打包、發佈到 GitHub & ASC & AltStore、發佈更新日誌」 這一冗長流程，終於在朋友的念念叨叨和我本人積壓的不滿下，我覺得該作出改變了...
 ---
 
 我目前正在維護 [**EhPanda**](https://ehpanda.app) 這個開源專案，在引入 GitHub Actions 之前，我每次發佈新版本都要手動執行 「測試、更新版本、打包、發佈到 GitHub & ASC & AltStore、發佈更新日誌」 這一冗長流程，終於在朋友的念念叨叨和我本人積壓的不滿下，我覺得該作出改變了...

@@ -2,7 +2,6 @@
 tag: Code
 title: TCA で Recursive Navigation 実装してみた
 date: 2022-01-17T03:38:34-0000
-description: 本記事では、Recursive Navigation （再帰的ナビゲーション）は `View A -> View B -> View A -> View B -> …` みたいに延々とナビゲートしていくパターンを指します。それを TCA でどうやって実装するのかについて解説したいと思います。🙇‍♂️
 ---
 
 ## はじめに

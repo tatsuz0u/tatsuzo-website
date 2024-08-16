@@ -2,7 +2,6 @@
 tag: Code
 title: BitRemote - 個人開発しているアプリの技術解説
 date: 2023-05-11T06:56:04-0000
-description: BitRemote は、Apple 全プラットフォーム対応を目指す、ダウンロードタスクを遠隔管理するアプリです。フル SwiftUI + TCA で作られていて、現時点で iOS・iPadOS・macOS を対応しています。今回は、アプリを作るのに用いた技術について解説していきたいと思います。
 ---
 
 ## はじめに

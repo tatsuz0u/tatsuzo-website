@@ -2,7 +2,6 @@
 tag: Code
 title: Live Activities & Dynamic Island
 date: 2022-10-25T15:28:08-0000
-description: Live Activities 機能やそれを実装する API について解説していきたいと思います。Dynamic Island は機能というより表示領域みたいなもんなんですが、目を引くのでタイトルに入れました。XD
 ---
 
 ## はじめに
