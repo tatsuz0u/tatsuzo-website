@@ -240,8 +240,8 @@ env:
       --apiIssuer <secrets_asc_issuer_id>
 ```
 
-- `altool`  也可以使用  `-u <apple_id> -p <app_password>`  的方式，缺點是可能遇到雙重認證，需要用這種方式可以到 [Manage your Apple ID](http://appleid.apple.com/) 生成 App 專用密碼
-- `--apiKey <key_id> --apiIssuer <issuer_id>`  的方式所需的資料可以在 [App Store Connect](http://appstoreconnect.apple.com) 的  `Users and Access - Keys`  取得
+- `altool`  也可以使用  `-u <apple_id> -p <app_password>`  的方式，缺點是可能遇到雙重認證，需要用這種方式可以到 [Manage your Apple ID](https://appleid.apple.com/) 生成 App 專用密碼
+- `--apiKey <key_id> --apiIssuer <issuer_id>`  的方式所需的資料可以在 [App Store Connect](https://appstoreconnect.apple.com) 的  `Users and Access - Keys`  取得
 
 ### 發佈到 AltStore
 在發佈之前，需要先提交更新版本的更改。
