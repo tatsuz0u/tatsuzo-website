@@ -105,5 +105,5 @@ W-8BEN-E フォームの記入方法とか、EIN とは何かについては別�
 > - RP3PMMMMJ4AR
 > - JMXY7763XY6Y
 >
-> **今すぐダウンロード〜（[App Store](https://apps.apple.com/ja/app/bitremote/id6477765303)）**
+> **今すぐダウンロード〜（[App Store](https://apps.apple.com/app/id6477765303)）**
 {: .prompt-tip }

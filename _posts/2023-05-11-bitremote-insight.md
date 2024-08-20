@@ -137,7 +137,7 @@ public struct RedatedView<Content: View>: View {
 - `.navigationSplitViewColumnWidth` View の所属カラムの横幅
 
 ## 終わりに
-> [**BitRemote**](https://bitremote.app) は現在、[App Store](https://apps.apple.com/ja/app/bitremote/id6477765303) にて公開中です。
+> [**BitRemote**](https://bitremote.app) は現在、[App Store](https://apps.apple.com/app/id6477765303) にて公開中です。
 > 
 > よかったらアプリを触っていただけると嬉しいです！
 
